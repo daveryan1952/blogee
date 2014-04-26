@@ -2,12 +2,20 @@ require 'spec_helper'
 
 feature "Editing comments" do
   let!(:post) { FactoryGirl.create(:post) }
-  let!(:comment) { FactoryGirl.create(:comment, post: post) }
+  let!(:user) { FactoryGirl.create(:user) }
+#  let!(:comment) do
+#    comment = FactoryGirl.create(:comment, post: post)
+#    comment.update(user: user)
+#    comment
+#  end
 
+  let!(:comment) { FactoryGirl.create(:comment, post: post) }
+  
   before do
+    sign_in_as!(user)
     visit posts_path
     click_link post.title
-    click_link comment.author
+  #  click_link comment.author
     click_link "Edit Comment"
   end
 

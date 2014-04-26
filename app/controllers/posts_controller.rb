@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :find_post, except: [:index, :new, :create
-                                    ]
+  before_action :find_post, except: [:index, :new, :create ]
+  
   def index
     @posts = Post.all
   end
